@@ -1,0 +1,20 @@
+<Files "gitweb.cgi">
+    <IfModule mod_authz_host.c>
+        Require all granted
+        Satisfy any
+    </IfModule>
+    <IfModule !mod_authz_host.c>
+        Order deny,allow
+        Allow from all
+    </IfModule>
+</Files>
+
+<Files ~ "^([\._]ht|gitweb_config.perl$)">
+    <IfModule mod_authz_host.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_host.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</Files>
